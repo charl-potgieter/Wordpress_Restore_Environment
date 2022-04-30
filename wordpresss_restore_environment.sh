@@ -6,6 +6,8 @@
 # #Set 1 to pause to allow system status, 0 to proceed without checks
 # pause_to_check_system_status=0
 
+
+
 # printf "\n"
 # echo "Updating system...................."
 # printf "\n"
@@ -107,6 +109,7 @@
 # printf "\n"
 # sleep 1
 
+
 # service mysql start
 
 # mysql -e "CREATE DATABASE wordpress;"
@@ -123,6 +126,34 @@
 # done
 
 # mysql -e "CREATE USER wordpress@localhost IDENTIFIED BY '${wp_password}';"
-mysql -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO wordpress@localhost;"
-mysql -e "FLUSH PRIVILEGES;"
+# mysql -e "GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO wordpress@localhost;"
+# mysql -e "FLUSH PRIVILEGES;"
+# service mysql restart
+
+
+
+# printf "\n"
+# echo "Install phpMyAdmin...................."
+# echo "Select apache2 as webserver"
+# echo "Configure database for phpMyAdmin with dbconfig-common (don’t perform manual configuration)"
+# printf "\n"
+# read -p "Press any key to continue... " -n1 -s
+
+# apt-get install phpmyadmin
+
 service mysql restart
+service apache2 restart
+
+
+if [ $pause_to_check_system_status -eq 1 ]
+then
+    printf "\n"
+    echo "-------------------------------"
+    echo "      SYSTEM STATUS CHECK"
+    echo "-------------------------------"
+    echo "To check status enter http://localhost/phpmyadmin in browser, preferably in private mode.  "
+    echo "phpMyAdmin welcome page should be displayed.   User = wordpress, password = WHICH ONE???"
+    printf "\n"
+    read -p "Press any key to continue... " -n1 -s
+    printf "\n\n"
+fi
