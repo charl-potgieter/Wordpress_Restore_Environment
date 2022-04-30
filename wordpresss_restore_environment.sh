@@ -141,19 +141,32 @@
 
 # apt-get install phpmyadmin
 
-service mysql restart
-service apache2 restart
+# service mysql restart
+# service apache2 restart
 
 
-if [ $pause_to_check_system_status -eq 1 ]
-then
-    printf "\n"
-    echo "-------------------------------"
-    echo "      SYSTEM STATUS CHECK"
-    echo "-------------------------------"
-    echo "To check status enter http://localhost/phpmyadmin in browser, preferably in private mode.  "
-    echo "phpMyAdmin welcome page should be displayed.   User = wordpress, password = WHICH ONE???"
-    printf "\n"
-    read -p "Press any key to continue... " -n1 -s
-    printf "\n\n"
-fi
+# if [ $pause_to_check_system_status -eq 1 ]
+# then
+#     printf "\n"
+#     echo "-------------------------------"
+#     echo "      SYSTEM STATUS CHECK"
+#     echo "-------------------------------"
+#     echo "To check status enter http://localhost/phpmyadmin in browser, preferably in private mode.  "
+#     echo "phpMyAdmin welcome page should be displayed.   User = wordpress, password = that chosen duuring MYSQL configuration"
+#     printf "\n"
+#     read -p "Press any key to continue... " -n1 -s
+#     printf "\n\n"
+# fi
+
+
+# printf "\n"
+# echo "Copy previously backued up file...................."
+# printf "\n"
+# sleep 1
+
+# read -e -p "Enter source filepath (tab autocompletes path.  Source path undergodaddy is public_html subfolder): " backup_path
+# sudo -u www-data cp -rv $backup_path/* /srv/www/wordpress
+
+
+# apt-get install dos2unix
+# sudo -u www-data find /srv/www/wordpress/ -type f -print0 | sudo -u www-data xargs -0 dos2unix
