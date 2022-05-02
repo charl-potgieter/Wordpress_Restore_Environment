@@ -4,7 +4,7 @@
 # #  -  Script to be run as root
 
 # #Set 1 to pause to allow system status, 0 to proceed without checks
-pause_to_check_system_status=0
+pause_to_check_system_status=1
 
 
 
@@ -195,3 +195,54 @@ pause_to_check_system_status=0
 #     read -p "Press any key to continue... " -n1 -s
 #     printf "\n\n"
 # fi
+
+
+
+
+# printf "\n"
+# echo "Import wordpress database ((previously backed up from live site)  into MYSQL...................."
+# printf "\n"
+# sleep 1
+
+# read -e -p "Enter source filepath (tab autocompletes path.  When prompted for password, this is your root password): " db_path
+# mysql -u root -p wordpress   <   $db_path
+
+# if [ $pause_to_check_system_status -eq 1 ]
+# then
+#     printf "\n"
+#     echo "-------------------------------"
+#     echo "      SYSTEM STATUS CHECK"
+#     echo "-------------------------------"
+#     echo "wordpress tables should show below if import was succsesful"
+#     printf "\n"
+#     mysql -e "USE wordpress;SHOW TABLES;" 
+#     printf "\n"
+#     read -p "Press any key to continue... " -n1 -s
+#     printf "\n\n"
+# fi
+
+
+printf "\n"
+echo "Update the URLs to refer to localhost...................."
+printf "\n"
+sleep 1
+
+sql_filename="/srv/www/wordpress/temp_sql_url_update.sql"
+read -p "Enter live website url in format www.example.com: " live_url
+
+#Create the sql
+echo "UPDATE wp_options SET option_value = replace(option_value, 'https://www.example.com', 'http://localhost') WHERE option_name = 'home' OR option_name = 'siteurl';
+  
+UPDATE wp_posts SET post_content = replace(post_content, 'https://www.example.com', 'http://localhost');
+  
+UPDATE wp_postmeta SET meta_value = replace(meta_value,'https://www.example.com','http://localhost');
+
+UPDATE wp_options SET option_value = replace(option_value, 'https://www.example.com', 'http://localhost') WHERE option_name = 'home' OR option_name = 'siteurl';
+  
+UPDATE wp_posts SET post_content = replace(post_content, 'https://www.example.com', 'http://localhost');
+  
+UPDATE wp_postmeta SET meta_value = replace(meta_value,'https://www.example.com','http://localhost');" > $sql_filename
+
+
+#Replace www.example.com with live site url
+sed -i -e "s/www.example.com/${live_url}/g" $sql_filename
