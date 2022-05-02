@@ -4,7 +4,7 @@
 # #  -  Script to be run as root
 
 # #Set 1 to pause to allow system status, 0 to proceed without checks
-# pause_to_check_system_status=0
+pause_to_check_system_status=0
 
 
 
@@ -115,7 +115,7 @@
 # mysql -e "CREATE DATABASE wordpress;"
 
 # while true; do
-#   read -s -p "Enter password for wordpress@localhost " wp_password
+#   read -s -p "Enter password for wordpress@localhost.  NEEDS TO BE THE SAME AS LIVE SITE " wp_password
 #   echo
 #   read -s -p "Confirm password  " wp_password2
 #   echo
@@ -160,7 +160,7 @@
 
 
 # printf "\n"
-# echo "Copy previously backued up file...................."
+# echo "Copy previously backed up file...................."
 # printf "\n"
 # sleep 1
 
@@ -170,3 +170,28 @@
 
 # apt-get install dos2unix
 # sudo -u www-data find /srv/www/wordpress/ -type f -print0 | sudo -u www-data xargs -0 dos2unix
+
+
+# printf "\n"
+# echo "Edit wp-config.php file to update user and password...................."
+# printf "\n"
+# sleep 1
+
+# sed -i "s/define( 'DB_NAME'.*/define( 'DB_NAME', 'wordpress' );/g" /srv/www/wordpress/wp-config.php
+# sed -i "s/define( 'DB_USER'.*/define( 'DB_USER', 'wordpress' );/g" /srv/www/wordpress/wp-config.php
+# sed -i "s/define( 'DB_PASSWORD'.*/define( 'PASSWORD', '$wp_password' );/g" /srv/www/wordpress/wp-config.php
+
+
+
+# if [ $pause_to_check_system_status -eq 1 ]
+# then
+#     printf "\n"
+#     echo "-------------------------------"
+#     echo "      SYSTEM STATUS CHECK"
+#     echo "-------------------------------"
+#     echo "To check status enter http://localhost in browser, preferably in private mode.  "
+#     echo "Wordpress login page should appear.  DON'T LOGIN YET, JUST FOR CHECKING AT THIS STAGE"
+#     printf "\n"
+#     read -p "Press any key to continue... " -n1 -s
+#     printf "\n\n"
+# fi
