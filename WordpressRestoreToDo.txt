@@ -1,0 +1,9 @@
+Maybe separate into 3 scripts:
+* Create environment
+* Backup (incremental)
+* Restore (again incremental))
+
+
+Backup:
+ * Work on below to FTP files:
+    wget --ask-password -m ftp://username@powernumerics.com -P /TargetPath
