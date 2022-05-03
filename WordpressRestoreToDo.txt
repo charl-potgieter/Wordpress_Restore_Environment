@@ -3,6 +3,12 @@ Maybe separate into 3 scripts:
 * Backup (incremental)
 * Restore (again incremental))
 
+Store below in config file:
+ - backup path
+ - domain
+ - ssh  = cpanel = mysql user
+  - read password once when scripts is being run
+
 
 Backup:
  * Work on below to FTP files:
@@ -12,6 +18,12 @@ Backup:
 
    Below command seems to work inside ssh:
    mysqldump -h localhost -u jkdwrlryv6s3 -p --no-tablespaces i8640980_wp1 > file_name.sql
+
+   And issued from a bash script
+   ssh jkdwrlryv6s3@powernumerics.com mysqldump -h localhost -u jkdwrlryv6s3 -p --no-tablespaces i8640980_wp1 > ~/file_name_local.sql
+   --> this saves to home directory on the client (as oposed to teh remote server)
+
+
 
    Should I potentially use the --all-databases option rather than having to specify the table
 
