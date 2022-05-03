@@ -1,7 +1,10 @@
-!/bin/bash
+#!/bin/bash
 
-# NOTES
-#  -  Script to be run as root
+# Script should only be run as root
+if [[ $(/usr/bin/id -u) -ne 0 ]]; then
+    echo "This script can only be run as root"
+    exit
+fi
 
 #Set 1 to pause to allow system status, 0 to proceed without checks
 pause_to_check_system_status=1
