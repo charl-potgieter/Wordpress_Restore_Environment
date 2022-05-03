@@ -12,4 +12,15 @@ backup_config_file="/etc/wordpres-backup.config"
 if [ ! -f $backup_config_file ]; then
     read -e -p "Enter backup filepath (tab autocompletes path): " backup_path
     echo $backup_path > $backup_config_file   
+else
+    backup_path=$(head -n 1 $backup_config_file)
+    read -p "Backing up to $backup_path, y to continue any other key to change: " path_choice
+    if [ $path_choice != "y" ]; then
+        read -e -p "Enter backup filepath (tab autocompletes path): " backup_path
+        echo $backup_path > $backup_config_file
+    fi
 fi
+
+backup_path=$(head -n 1 $backup_config_file)
+mkdir -p $backup_path/files
+mkdir -p $backup_path/database

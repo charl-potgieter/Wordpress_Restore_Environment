@@ -7,3 +7,16 @@ Maybe separate into 3 scripts:
 Backup:
  * Work on below to FTP files:
     wget --ask-password -m ftp://username@powernumerics.com -P /TargetPath
+
+* Mysql download - may need to use SSH ?
+
+   Below command seems to work inside ssh:
+   mysqldump -h localhost -u jkdwrlryv6s3 -p --no-tablespaces i8640980_wp1 > file_name.sql
+
+   Should I potentially use the --all-databases option rather than having to specify the table
+
+   https://au.godaddy.com/help/enable-ssh-for-my-linux-hosting-account-16102
+   
+   https://linuxize.com/post/how-to-back-up-and-restore-mysql-databases-with-mysqldump/
+
+   https://stackoverflow.com/questions/10146987/using-a-bash-script-to-connect-to-remote-server-make-and-download-mysql-databa
