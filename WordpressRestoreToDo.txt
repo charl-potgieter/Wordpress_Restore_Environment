@@ -7,7 +7,11 @@ Store below in config file:
  - backup path
  - domain
  - ssh  = cpanel = mysql user
+  - https://askubuntu.com/questions/743493/best-way-to-read-a-config-file-in-bash
+   - https://opensource.com/article/21/6/bash-config
   - read password once when scripts is being run
+
+
 
 
 Backup:
