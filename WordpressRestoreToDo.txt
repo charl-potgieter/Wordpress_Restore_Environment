@@ -15,21 +15,46 @@ Store below in config file:
 
 
 Backup:
+
+ * wget is going to have issues with files that are updated and then get duplicated.  Try lftp
+ https://www.cyberciti.biz/faq/lftp-mirror-example/
+
  * Work on below to FTP files:
-    wget --ask-password -m ftp://username@powernumerics.com -P /TargetPath
+    wget -O --ask-password -m ftp://username@powernumerics.com -P /TargetPath
+
+
+All this may be overkill --> maybe just download from phpMyAdmin
 
 * Mysql download - may need to use SSH ?
+Below works (username and password are for the mysql datababase found in the wp-config.php file) but ..
+NOTE: For above to work first need to add pc (host) IP address to godaddy cpanel under Remote Mysql
+
+sudo mysqldump --column-statistics=0 -h powernumerics.com -u i8640980_wp1 -p --no-tablespaces i8640980_wp1 > ~/a432.sql
+
+
+
+
+
+
+--> Maybe not:
+https://stackoverflow.com/questions/2989724/how-to-mysqldump-remote-db-from-local-machine
+mysqldump -h hostname-of-the-server -u mysql_user -p database_name > file.sql
+
+# May have to add host ip?
+# https://au.godaddy.com/help/connect-remotely-to-a-mysql-database-in-my-linux-hosting-account-16103
+
+
 
    Below command seems to work inside ssh:
    mysqldump -h localhost -u jkdwrlryv6s3 -p --no-tablespaces i8640980_wp1 > file_name.sql
 
    And issued from a bash script
    ssh jkdwrlryv6s3@powernumerics.com mysqldump -h localhost -u jkdwrlryv6s3 -p --no-tablespaces i8640980_wp1 > ~/file_name_local.sql
-   --> this saves to home directory on the client (as oposed to teh remote server)
+   --> this saves to home directory on the client (as opposed to teh remote server)
 
 
 
-   Should I potentially use the --all-databases option rather than having to specify the table
+   Should I potentially use the --all-databases option rather than having to specify the table --> will this work on import?
 
    https://au.godaddy.com/help/enable-ssh-for-my-linux-hosting-account-16102
    
