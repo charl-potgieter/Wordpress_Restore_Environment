@@ -12,6 +12,14 @@ Backup:
 
  * wget is going to have issues with files that are updated and then get duplicated.  Try lftp
  https://www.cyberciti.biz/faq/lftp-mirror-example/
+ https://randyzwitch.com/mirror-ftp-lftp/
+
+  Below seems to be on the right track but needs to prompt for password
+  lftp -e "mirror -c -e --parallel=20 --verbose /public_html /home/charl/temp_wp_backups/files;" ftp://username@powernumerics.com
+
+   Now having certificate issue but maybe solvable with beliow
+   https://gist.github.com/pixeline/0f9f922cffb5a6bba97a  
+
 
  * Work on below to FTP files:
     wget -O --ask-password -m ftp://username@powernumerics.com -P /TargetPath
