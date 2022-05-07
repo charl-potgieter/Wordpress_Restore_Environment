@@ -20,6 +20,16 @@ echo "https://au.godaddy.com/help/connect-remotely-to-a-mysql-database-in-my-lin
 printf "\n"
 echo "When prompted for a password, enter the mysql database password.  This can be located in file wp-config.php in the live site domain.  This file is located in public_html on Godaddy shared hosting."
 printf "\n"
-echo "Backing up database..."
 
-mysqldump --column-statistics=0 -h $domain -u $mysqlusername -p --no-tablespaces $mysqldatabase > $backuppath/database/mysql.database
+if [ $timestamped -eq 1 ]
+then
+    current_time=$(date "+%Y%m%d-%H%M%S")
+    backupfilename=$current_time"-mysql.database"
+else
+    backupfilename=mysql.database
+fi
+
+mysqldump --column-statistics=0 -h $domain -u $mysqlusername -p --no-tablespaces $mysqldatabase > $backuppath/database/$backupfilename
+
+echo "Database backup complete."
+
