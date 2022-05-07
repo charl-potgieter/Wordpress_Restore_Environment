@@ -10,6 +10,11 @@ Worth checking that all necessary programs are installed before running script?
 
 Backup:
 
+https://www.linux-magazine.com/Online/Features/Bash-Tips-Passing-Passwords
+https://stackoverflow.com/questions/9293042/how-to-perform-a-mysqldump-without-a-password-prompt
+
+
+
 Issues with Mysqldump password passing.   Maybe I shouldnt be storing passwords in variables anyway?
 
  * wget is going to have issues with files that are updated and then get duplicated.  Try lftp

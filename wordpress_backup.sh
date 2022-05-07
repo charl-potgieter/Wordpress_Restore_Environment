@@ -18,6 +18,7 @@ source /etc/wordpress-backup.conf
 
 echo "The MYSQL is generally located in file wp-config.php in the live site domain.  This file is located in public_html on Godaddy shared hosting."
 
+
 mkdir -p $targetpath/files
 mkdir -p $targetpath/database
 
@@ -29,7 +30,7 @@ else
     backupfilename=mysql.database
 fi
 
-mysqldump --column-statistics=0 -h $domain -u $mysqlusername -p --no-tablespaces $mysqldatabase > $targetpath/database/$backupfilename
+mysqldump --column-statistics=0 -h $domain -u $mysqlusername --no-tablespaces $mysqldatabase > $targetpath/database/$backupfilename
 
 echo "Database backup complete."
 
