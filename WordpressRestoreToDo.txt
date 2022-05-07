@@ -10,6 +10,8 @@ Worth checking that all necessary programs are installed before running script?
 
 Backup:
 
+Issues with Mysqldump password passing.   Maybe I shouldnt be storing passwords in variables anyway?
+
  * wget is going to have issues with files that are updated and then get duplicated.  Try lftp
  https://www.cyberciti.biz/faq/lftp-mirror-example/
  https://randyzwitch.com/mirror-ftp-lftp/
