@@ -13,12 +13,17 @@ Is there an easy way to change the home drive to a mounted drive like dropbox on
 
 Backup:
 
+Document the password config files
+
+Change the location of the main config file to home directory rather than etc
+
 https://www.linux-magazine.com/Online/Features/Bash-Tips-Passing-Passwords
 https://stackoverflow.com/questions/9293042/how-to-perform-a-mysqldump-without-a-password-prompt
 https://stackoverflow.com/questions/42761829/lftp-save-username-password-for-specific-server
 
 --> issue is the script must then not be run as root
 
+Mysqldump progress status would be good
 
 
 Issues with Mysqldump password passing.   Maybe I shouldnt be storing passwords in variables anyway?
