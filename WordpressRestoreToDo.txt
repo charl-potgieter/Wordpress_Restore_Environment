@@ -6,12 +6,18 @@ Maybe separate into 3 scripts:
 Worth checking that all necessary programs are installed before running script?
 
 
+Potentially stop running script as root - will cause problems with password config files? 
 
+
+Is there an easy way to change the home drive to a mounted drive like dropbox on my local pc so config files don't need to be copied over each time
 
 Backup:
 
 https://www.linux-magazine.com/Online/Features/Bash-Tips-Passing-Passwords
 https://stackoverflow.com/questions/9293042/how-to-perform-a-mysqldump-without-a-password-prompt
+https://stackoverflow.com/questions/42761829/lftp-save-username-password-for-specific-server
+
+--> issue is the script must then not be run as root
 
 
 
