@@ -1,4 +1,7 @@
-## Setup backup / restore environment
+## About
+TBA TBA TBA
+
+### 1. Create backup / restore environment
 
 1. Run script TBA_TBA_TBA as sudo
 2. Copy .wodrpress-backup.conf into user home directory
@@ -14,12 +17,12 @@
         password userpassword
 
 
-## Run backup
+### Run backup
 
 Run  as standard user (not sudo) to ensure the configuration files per above are picked up correctly
 
 
-## Run restore
+### Run restore
 
 
 
