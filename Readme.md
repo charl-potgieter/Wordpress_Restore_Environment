@@ -4,7 +4,7 @@ TBA TBA TBA
 ### 1. Create backup / restore environment
 
 1. Run script TBA_TBA_TBA as sudo
-2. Copy .wodrpress-backup.conf into user home directory
+2. Copy .wordpress-backup.conf into user home directory and update user, password details etc.
 3. Create file ~/.my.cnf for purposes of mysqldump authentication containing the mysql user and password (can be found in live site directory in file wp-config.php):
 
         [mysqldump]

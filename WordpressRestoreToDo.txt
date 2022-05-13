@@ -3,7 +3,10 @@ Maybe separate into 3 scripts:
 * Backup (incremental)
 * Restore (again incremental))
 
-Worth checking that all necessary programs are installed before running script?
+Continue work on wordpress_create_restore_environment.sh
+ - ensure all inputs come from config file rather than read from keyboard
+  --> issue is config file is in user home directory --> how do I identify?
+  https://www.baeldung.com/linux/identify-user-called-by-sudo 
 
 
 Potentially stop running script as root - will cause problems with password config files? 
@@ -15,7 +18,7 @@ Backup:
 
 Document the password config files
 
-Change the location of the main config file to home directory rather than etc
+
 
 https://www.linux-magazine.com/Online/Features/Bash-Tips-Passing-Passwords
 https://stackoverflow.com/questions/9293042/how-to-perform-a-mysqldump-without-a-password-prompt
