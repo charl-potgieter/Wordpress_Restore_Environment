@@ -26,5 +26,16 @@ Run  as standard user (not sudo) to ensure the configuration files per above are
 
 
 
+### External references
 
+https://wordpress.org/support/article/wordpress-backups/
 
+https://wordpress.org/support/article/backing-up-your-wordpress-files/
+
+https://wordpress.org/support/article/backing-up-your-database/
+
+https://www.wpbeginner.com/wp-tutorials/how-to-move-live-wordpress-site-to-local-server/
+
+https://ubuntu.com/tutorials/https://ubuntu.com/tutorials/install-and-configure-wordpress#1-overview
+
+https://stackoverflow.com/questions/11929461/how-can-i-run-dos2unix-on-an-entire-directory
