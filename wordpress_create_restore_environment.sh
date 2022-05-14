@@ -41,7 +41,8 @@ apt-get install \
     php-mysql \
     php-xml \
     php-zip \
-    dos2unix
+    dos2unix \
+    lftp
 
 
 service apache2 start
