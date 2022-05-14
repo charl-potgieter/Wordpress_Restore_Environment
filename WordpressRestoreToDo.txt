@@ -4,10 +4,7 @@ Maybe separate into 3 scripts:
 * Restore (again incremental))
 
 Continue work on wordpress_create_restore_environment.sh
- - Install does not seem to be pausing for system checks
- - ensure all inputs come from config file rather than read from keyboard
-  --> issue is config file is in user home directory --> how do I identify?
-  https://www.baeldung.com/linux/identify-user-called-by-sudo 
+ - cannot log into phpMyAdmin but it may be the case that it needs the mysql database itself in place? --> maybe start to create a restore script and see how things go?
 
 
 Potentially stop running script as root - will cause problems with password config files? 

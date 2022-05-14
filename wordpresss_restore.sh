@@ -103,7 +103,7 @@ sudo apt install ghostscript \
                  php-mbstring \
                  php-mysql \
                  php-xml \
-#                  php-zip
+                 php-zip
 
 
 
