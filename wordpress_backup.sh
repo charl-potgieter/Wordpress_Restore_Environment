@@ -4,6 +4,8 @@ printf "\n"
 echo  "NOTE: For this script to work first need to add this pc (host) IP address to godaddy cpanel under Remote Mysql "
 echo "https://au.godaddy.com/help/connect-remotely-to-a-mysql-database-in-my-linux-hosting-account-16103 "
 printf "\n"
+read -p "Press any key to continue... " -n1 -s
+printf "\n\n"
 
 source ~/.wordpress-backup.conf
 
