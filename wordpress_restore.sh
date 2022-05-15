@@ -1,6 +1,6 @@
- #!/bin/bash
+#!/bin/bash
 
-if ! [ $(id -u) = 0 ]; then
+if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 
    exit 1
 fi
@@ -11,12 +11,10 @@ fi
 # https://superuser.com/questions/484277/get-home-directory-by-username
 loginuser=${SUDO_USER:-$USER}
 loginuserhome=$( getent passwd $loginuser | cut -d: -f6 )
-configfilepath=$loginuserhome/.wordpressbackup.conf
+configfilepath=$loginuserhome.wordpress-backup.conf
 
-echo $loginuserhome
-echo $configfilepath
 
-source /home/charl/.wordpressbackup.conf
+source $configfilepath
 
 # printf "\n"
 # echo "Copy previously backed up file...................."

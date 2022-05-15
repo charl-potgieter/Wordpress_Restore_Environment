@@ -6,13 +6,10 @@ TBA TBA TBA
 Refer Microsoft or Ubuntu websites for guidance
 
 &nbsp;
-
 ### 2. Move Ubuntu home director to Windows C drive (optional)
 This is a personal preference and may be useful to prevent losing configuration files in your home drive if the WSL environment needs to be reset.  See https://gist.github.com/charl-potgieter/512e91f9074c937ff84e67c6b38a40a3
 
 &nbsp;
-
-
 ### 2. Create backup / restore environment
 
 
