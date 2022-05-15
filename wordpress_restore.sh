@@ -1,57 +1,61 @@
  #!/bin/bash
 
-# Script should only be run as root
-if [[ $(/usr/bin/id -u) -ne 0 ]]; then
-    echo "This script can only be run as root"
-    exit
+if ! [ $(id -u) = 0 ]; then
+   echo "This script must be run as root" 
+   exit 1
 fi
+
 
 # Get config path name, first get login user and then user path
 # https://www.baeldung.com/linux/identify-user-called-by-sudo
 # https://superuser.com/questions/484277/get-home-directory-by-username
 loginuser=${SUDO_USER:-$USER}
 loginuserhome=$( getent passwd $loginuser | cut -d: -f6 )
-configfilepath=$loginuserhome/.wordpress-backup.conf
+configfilepath=$loginuserhome/.wordpressbackup.conf
 
-source $configfilepath
+echo $loginuserhome
+echo $configfilepath
 
-printf "\n"
-echo "Copy previously backed up file...................."
-printf "\n"
-sleep 1
+source /home/charl/.wordpressbackup.conf
+
+# printf "\n"
+# echo "Copy previously backed up file...................."
+# printf "\n"
+# sleep 1
 
 
 # targetpath is the target of the backup script, hence the name
-Sudo -u www-data rsync -v -a --del - $targetpath/files/* /srv/www/wordpress
+# Sudo -u www-data rsync -v -a --del - $targetpath/files/* /srv/www/wordpress
+
+# ls $targetpath/files
+
+# # Fix any windows file format newline issues that may arrive if files are stored on windows file system and accessed from a wsl environment
+# sudo -u www-data find /srv/www/wordpress/ -type f -print0 | sudo -u www-data xargs -0 dos2unix
 
 
-# Fix any windows file format newline issues that may arrive if files are stored on windows file system and accessed from a wsl environment
-sudo -u www-data find /srv/www/wordpress/ -type f -print0 | sudo -u www-data xargs -0 dos2unix
+# printf "\n"
+# echo "Edit wp-config.php file to update user and password...................."
+# printf "\n"
+# sleep 1
 
-
-printf "\n"
-echo "Edit wp-config.php file to update user and password...................."
-printf "\n"
-sleep 1
-
-sed -i "s/define( 'DB_NAME'.*/define( 'DB_NAME', 'wordpress' );/g" /srv/www/wordpress/wp-config.php
-sed -i "s/define( 'DB_USER'.*/define( 'DB_USER', 'wordpress' );/g" /srv/www/wordpress/wp-config.php
-sed -i "s/define( 'DB_PASSWORD'.*/define( 'PASSWORD', '$passwordwp' );/g" /srv/www/wordpress/wp-config.php
+# sed -i "s/define( 'DB_NAME'.*/define( 'DB_NAME', 'wordpress' );/g" /srv/www/wordpress/wp-config.php
+# sed -i "s/define( 'DB_USER'.*/define( 'DB_USER', 'wordpress' );/g" /srv/www/wordpress/wp-config.php
+# sed -i "s/define( 'DB_PASSWORD'.*/define( 'PASSWORD', '$passwordwp' );/g" /srv/www/wordpress/wp-config.php
 
 
 
-if [ $pause_to_check_system_status -eq 1 ]
-then
-    printf "\n"
-    echo "-------------------------------"
-    echo "      SYSTEM STATUS CHECK"
-    echo "-------------------------------"
-    echo "To check status enter http://localhost in browser, preferably in private mode.  "
-    echo "Wordpress login page should appear.  DON'T LOGIN YET, JUST FOR CHECKING AT THIS STAGE"
-    printf "\n"
-    read -p "Press any key to continue... " -n1 -s
-    printf "\n\n"
-fi
+# if [ $pause_to_check_system_status -eq 1 ]
+# then
+#     printf "\n"
+#     echo "-------------------------------"
+#     echo "      SYSTEM STATUS CHECK"
+#     echo "-------------------------------"
+#     echo "To check status enter http://localhost in browser, preferably in private mode.  "
+#     echo "Wordpress login page should appear.  DON'T LOGIN YET, JUST FOR CHECKING AT THIS STAGE"
+#     printf "\n"
+#     read -p "Press any key to continue... " -n1 -s
+#     printf "\n\n"
+# fi
 
 
 
