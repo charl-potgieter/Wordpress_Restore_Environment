@@ -12,19 +12,10 @@ source ~/.wordpress-backup.conf
 mkdir -p $targetpath/files
 mkdir -p $targetpath/database
 
-if [ $timestamped -eq 1 ]
-then
-    current_time=$(date "+%Y%m%d-%H%M%S")
-    backupfilename=$current_time"-mysql.database"
-else
-    backupfilename=mysql.database
-fi
-
-
 printf "\n"
 echo "Backing up database (may take a little while)..."
 
-mysqldump --column-statistics=0 -h powernumerics.com  --no-tablespaces $mysqldatabase > $targetpath/database/$backupfilename
+mysqldump --column-statistics=0 -h powernumerics.com  --no-tablespaces $mysqldatabase > $targetpath/database/mysql.database
 
 
 printf "\n"
