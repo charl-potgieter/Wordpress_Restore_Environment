@@ -3,6 +3,8 @@ Maybe separate into 3 scripts:
 * Backup (incremental)
 * Restore (again incremental))
 
+I think there was an issue with updating from example.com to live url but hopefully fixed now
+
 Any way to encrypt my wsl home drive on dropbox?
 
 Continue work on wordpress_create_restore_environment.sh
